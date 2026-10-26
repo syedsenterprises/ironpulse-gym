@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>IronPulse Gym — Train Hard, Recover Harder</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0e0e0e;color:#f2f2f2;font-family:'Inter',sans-serif}
+header{max-width:1080px;margin:0 auto;padding:18px 22px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Anton',sans-serif;font-size:28px;letter-spacing:.03em}.logo span{color:#c8f542}
+.btn{background:#c8f542;color:#0e0e0e;border:0;padding:12px 22px;border-radius:8px;font-weight:800;cursor:pointer}
+.hero{max-width:1080px;margin:0 auto;padding:40px 22px;display:grid;grid-template-columns:1.2fr .8fr;gap:26px;align-items:start}
+.hero h1{font-family:'Anton',sans-serif;font-size:64px;line-height:.95;margin:0;text-transform:uppercase}
+.hero h1 span{color:#c8f542}
+.hero p{color:#b3b3b3;font-size:17px}
+.badge{display:inline-block;background:#c8f542;color:#0e0e0e;font-weight:800;padding:6px 12px;border-radius:6px;margin-bottom:14px}
+table{width:100%;border-collapse:collapse;margin-top:10px}
+th{color:#c8f542;text-align:left;padding:10px;border-bottom:2px solid #2a2a2a}
+td{padding:11px 10px;border-bottom:1px solid #222}
+td button{width:auto;padding:7px 14px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+h2{font-family:'Anton',sans-serif;font-size:34px;letter-spacing:.02em;margin:36px 0 6px;text-transform:uppercase}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.plan{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:16px;padding:24px;position:relative}
+.plan.hot{border-color:#c8f542}
+.plan.hot::before{content:'MOST POPULAR';position:absolute;top:-12px;left:20px;background:#c8f542;color:#0e0e0e;font-size:11px;font-weight:800;padding:4px 10px;border-radius:6px}
+.plan b{font-size:32px}.plan b small{font-size:15px;color:#b3b3b3}
+.plan ul{color:#b3b3b3;padding-left:18px}
+.plan button{width:100%}
+.bmi{max-width:640px;margin:26px auto;padding:26px;background:#1a1a1a;border-radius:16px}
+.bmi input{width:100%;padding:12px;margin:6px 0;border:1px solid #333;background:#0e0e0e;color:#fff;border-radius:8px}
+.bmi .out{font-size:20px;margin-top:12px}.bmi .out b{color:#c8f542}
+.ok{background:#1e3a1e;color:#c8f542;padding:12px;border-radius:10px;margin-top:12px;display:none}
+.bk{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:12px;padding:14px;margin:10px 0;display:flex;justify-content:space-between;align-items:center}
+.bk button{width:auto;padding:8px 14px;background:#b42318}
+footer{text-align:center;color:#777;padding:24px;font-size:13px}
+@media(max-width:700px){.hero,.plans{grid-template-columns:1fr}.hero h1{font-size:46px}}
+</style></head><body>
+<header><div class="logo">IRON<span>PULSE</span></div><button class="btn" onclick="document.querySelector('.bmi').scrollIntoView()">Free trial week</button></header>
+<section class="hero"><div><span class="badge">NO JOINING FEE THIS MONTH</span><h1>Strong looks good on <span>everyone.</span></h1><p>24/7 access, real coaches, and classes that push you without breaking you. Book a class below — it saves in this browser. First week free.</p>
+<h2 style="margin-bottom:4px">My class bookings</h2><div id="blist"></div></div>
+<div><h2 style="margin:0 0 4px">This week's classes</h2>
+<table><tr><th>Day</th><th>Class</th><th>Time</th><th></th></tr>
+<tr><td>Mon</td><td>Strength Foundations</td><td>6:30 AM</td><td><button class="btn" onclick="bookClass('Strength Foundations','Mon 6:30 AM')">Book</button></td></tr>
+<tr><td>Tue</td><td>HIIT Blast</td><td>7:00 PM</td><td><button class="btn" onclick="bookClass('HIIT Blast','Tue 7:00 PM')">Book</button></td></tr>
+<tr><td>Wed</td><td>Yoga &amp; Mobility</td><td>8:00 AM</td><td><button class="btn" onclick="bookClass('Yoga & Mobility','Wed 8:00 AM')">Book</button></td></tr>
+<tr><td>Thu</td><td>Boxing Conditioning</td><td>6:30 PM</td><td><button class="btn" onclick="bookClass('Boxing Conditioning','Thu 6:30 PM')">Book</button></td></tr>
+<tr><td>Sat</td><td>Olympic Lifting</td><td>10:00 AM</td><td><button class="btn" onclick="bookClass('Olympic Lifting','Sat 10:00 AM')">Book</button></td></tr></table>
+<input id="gname" placeholder="Your name (for class bookings)" style="width:100%;padding:12px;margin:12px 0;border:1px solid #333;background:#0e0e0e;color:#fff;border-radius:8px"/>
+</div></section>
+<div class="wrap"><h2>Membership</h2>
+<div class="plans">
+<div class="plan"><h3>Starter</h3><b>$19<small>/mo</small></b><ul><li>Off-peak access</li><li>Locker room</li><li>1 class / week</li></ul><button class="btn" onclick="join('Starter')">Join Starter</button></div>
+<div class="plan hot"><h3>Pro</h3><b>$39<small>/mo</small></b><ul><li>24/7 access</li><li>Unlimited classes</li><li>1 PT session / month</li><li>Nutrition plan</li></ul><button class="btn" onclick="join('Pro')">Join Pro</button></div>
+<div class="plan"><h3>Elite</h3><b>$79<small>/mo</small></b><ul><li>Everything in Pro</li><li>Weekly PT sessions</li><li>Recovery room + sauna</li></ul><button class="btn" onclick="join('Elite')">Join Elite</button></div>
+</div><div class="ok" id="joinok"></div></div>
+<section class="bmi"><h2 style="margin:0 0 10px">BMI calculator</h2>
+<input id="w" type="number" placeholder="Weight (kg)" oninput="bmi()"/><input id="h" type="number" placeholder="Height (cm)" oninput="bmi()"/>
+<div class="out" id="o">Enter weight and height to see your BMI.</div></section>
+<footer>IronPulse demo theme · Static site — bookings saved in your browser. Connect a booking/payment system for real memberships.</footer>
+<script>
+let B=JSON.parse(localStorage.getItem('ip_bookings')||'[]');
+function save(){localStorage.setItem('ip_bookings',JSON.stringify(B));list()}
+function list(){document.getElementById('blist').innerHTML=B.length?B.map((b,i)=>`<div class="bk"><span><b>${b.cls}</b> — ${b.when} · ${b.name}</span><button class="btn" onclick="B.splice(${i},1);save()">Cancel</button></div>`).join(''):'<p style="color:#b3b3b3">No bookings yet — pick a class on the right.</p>'}
+function bookClass(cls,when){let nm=document.getElementById('gname').value.trim();if(!nm){alert('Enter your name first (box under the class table).');return}B.push({cls,when,name:nm});save()}
+function join(p){let ok=document.getElementById('joinok');ok.style.display='block';ok.innerHTML=`${p} membership selected. A real signup would continue to payment here — this demo stops before charging anything.`}
+function bmi(){let w=parseFloat(document.getElementById('w').value),h=parseFloat(document.getElementById('h').value)/100;if(!w||!h)return;let v=w/(h*h);let c=v<18.5?'Underweight':v<25?'Healthy':v<30?'Overweight':'Obese';document.getElementById('o').innerHTML='Your BMI: <b>'+v.toFixed(1)+'</b> — '+c+' (general guide only, not medical advice).'}
+list();
+</script></body></html>
